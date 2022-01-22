@@ -34,6 +34,11 @@ download_code () {
   # unpack ffmpeg
   bunzip2 ffmpeg-$6.tar.bz2
   tar -xf ffmpeg-$6.tar
+  # make snapshot folder name consistent with releases
+  if [ "$6" == "snapshot" ]; then
+    mv ffmpeg ffmpeg-snapshot
+  fi
+
   cd "ffmpeg-$6/"
   checkStatus $? "change directory failed"
 
