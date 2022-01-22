@@ -1,1 +1,7 @@
 .DS_Store
+*
+!build/
+!test/
+!README.md
+!build.sh
+!run_tests.sh
