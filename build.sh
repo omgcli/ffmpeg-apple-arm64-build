@@ -192,6 +192,12 @@ checkStatus $? "build opus"
 echoDurationInSections $START_TIME
 
 START_TIME=$(currentTimeInSeconds)
+echoSection "compile fdk-aac"
+$SCRIPT_DIR/build-fdk-aac.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$CPUS" "2.0.2" > "$WORKING_DIR/build-fdk-aac.log" 2>&1
+checkStatus $? "build fdk-aac"
+echoDurationInSections $START_TIME
+
+START_TIME=$(currentTimeInSeconds)
 echoSection "compile ffmpeg"
 $SCRIPT_DIR/build-ffmpeg.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$OUT_DIR" "$CPUS" "snapshot" > "$WORKING_DIR/build-ffmpeg.log" 2>&1
 checkStatus $? "build ffmpeg"

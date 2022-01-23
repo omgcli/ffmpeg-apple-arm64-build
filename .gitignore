@@ -1,7 +1,9 @@
 .DS_Store
 *
 !build/
+!build/build-fdk-aac.sh
 !test/
 !README.md
 !build.sh
 !run_tests.sh
+!install.sh
