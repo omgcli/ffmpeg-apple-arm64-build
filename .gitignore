@@ -1,7 +1,6 @@
 .DS_Store
 *
 !build/
-!build/build-fdk-aac.sh
 !test/
 !README.md
 !build.sh
