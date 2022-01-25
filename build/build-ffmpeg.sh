@@ -57,7 +57,7 @@ configure_build () {
   # --pkg-config-flags="--static" is required to respect the Libs.private flags of the *.pc files
   # --enable-libfdk-aac requires --enable-nonfree
   ./configure --prefix="$4" --enable-gpl --enable-nonfree --pkg-config-flags="--static" --pkg-config=$3/bin/pkg-config \
-      --enable-libaom --enable-libopenh264 --enable-libx264 --enable-libx265 --enable-libvpx \
+      --enable-libaom --enable-libopenh264 --enable-libx264 --enable-libx265 --enable-libvpx --enable-libtheora \
       --enable-libmp3lame --enable-libfdk-aac --enable-libopus --enable-neon --enable-runtime-cpudetect \
       --enable-audiotoolbox --enable-videotoolbox --enable-libvorbis --enable-libsvtav1 \
       --enable-libass --enable-lto --enable-opencl
@@ -92,10 +92,7 @@ make_compile () {
 }
 
 build_main () {
-
-
   # ffmpeg we always want to rebuild
-
   if [[ ! -d "$2/${SOFTWARE}" ]]
   then
     make_directories $@
@@ -104,8 +101,8 @@ build_main () {
   fi
 
   make_clean $@
+  configure_build $@
   make_compile $@
-
 }
 
 build_main $@
