@@ -24,28 +24,37 @@ make_directories() {
 }
 
 download_code () {
-
   cd "$2/${SOFTWARE}"
   checkStatus $? "change directory failed"
-  # download source
-  curl -O https://ffmpeg.org/releases/ffmpeg-$6.tar.bz2
-  checkStatus $? "download of ${SOFTWARE} failed"
 
-  # unpack ffmpeg
-  bunzip2 ffmpeg-$6.tar.bz2
-  tar -xf ffmpeg-$6.tar
   # make snapshot folder name consistent with releases
   if [ "$6" == "snapshot" ]; then
-    mv ffmpeg ffmpeg-snapshot
+    git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg-snapshot
+  else
+    # download source
+    curl -O https://ffmpeg.org/releases/ffmpeg-$6.tar.bz2
+    checkStatus $? "download of ${SOFTWARE} failed"
+
+    # unpack ffmpeg
+    bunzip2 ffmpeg-$6.tar.bz2
+    tar -xf ffmpeg-$6.tar
   fi
 
   cd "ffmpeg-$6/"
   checkStatus $? "change directory failed"
+}
 
+update_snapshot () {
+  if [ "$6" == "snapshot" ]; then
+    cd "$2/${SOFTWARE}/ffmpeg-snapshot"
+    checkStatus $? "change directory failed"
+
+    git pull
+    checkStatus $? "git pull failed"
+  fi
 }
 
 configure_build () {
-
   cd "$2/${SOFTWARE}/ffmpeg-$6/"
   checkStatus $? "change directory failed"
 
@@ -63,21 +72,16 @@ configure_build () {
       --enable-libass --enable-lto --enable-opencl
 
   checkStatus $? "configuration of ${SOFTWARE} failed"
-
 }
 
 make_clean() {
-
   cd "$2/${SOFTWARE}/ffmpeg-$6/"
   checkStatus $? "change directory failed"
   make clean
   checkStatus $? "make clean for $SOFTWARE failed"
-
-
 }
 
 make_compile () {
-
   cd "$2/${SOFTWARE}/ffmpeg-$6/"
   checkStatus $? "change directory failed"
 
@@ -88,7 +92,6 @@ make_compile () {
   # install
   make install
   checkStatus $? "installation of ${SOFTWARE} failed"
-
 }
 
 build_main () {
@@ -101,6 +104,7 @@ build_main () {
   fi
 
   make_clean $@
+  update_snapshot $@
   configure_build $@
   make_compile $@
 }
