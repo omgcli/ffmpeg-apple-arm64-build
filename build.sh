@@ -40,10 +40,10 @@ echo "output directory is ${OUT_DIR}"
 
 # prepare workspace
 echoSection "prepare workspace"
-mkdir "$TOOL_DIR"
+mkdir -p "$TOOL_DIR"
 checkStatusAndAction $? "unable to create tool directory"
 PATH="$TOOL_DIR/bin:$PATH"
-mkdir "$OUT_DIR"
+mkdir -p "$OUT_DIR"
 checkStatusAndAction $? "unable to create output directory"
 
 # detect CPU threads (nproc for linux, sysctl for osx)
