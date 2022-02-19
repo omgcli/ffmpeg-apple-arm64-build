@@ -28,7 +28,7 @@ download_code () {
   checkStatus $? "change directory failed"
   # download source
 #  git clone https://github.com/fribidi/fribidi.git
-  curl -O -L https://github.com/fribidi/fribidi/releases/download/v1.0.10/fribidi-$5.tar.xz
+  curl -O -L https://github.com/fribidi/fribidi/releases/download/v$5/fribidi-$5.tar.xz
   checkStatus $? "download of ${SOFTWARE} failed"
 
   tar xf "fribidi-$5.tar.xz"

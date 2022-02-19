@@ -27,7 +27,7 @@ download_code () {
   cd "$2/${SOFTWARE}"
   checkStatus $? "change directory failed"
   # download source
-  curl -O -L https://github.com/libass/libass/releases/download/0.15.1/libass-$5.tar.xz 
+  curl -O -L https://github.com/libass/libass/releases/download/$5/libass-$5.tar.xz
   checkStatus $? "download of ${SOFTWARE} failed"
 
   tar xf "libass-$5.tar.xz"
