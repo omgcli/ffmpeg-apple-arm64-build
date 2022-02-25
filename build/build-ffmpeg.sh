@@ -68,7 +68,7 @@ configure_build () {
   ./configure --prefix="$4" --enable-gpl --enable-nonfree --pkg-config-flags="--static" --pkg-config=$3/bin/pkg-config \
       --enable-libaom --enable-libopenh264 --enable-libx264 --enable-libx265 --enable-libvpx --enable-libtheora \
       --enable-libmp3lame --enable-libfdk-aac --enable-libopus --enable-neon --enable-runtime-cpudetect \
-      --enable-audiotoolbox --enable-videotoolbox --enable-libvorbis --enable-libsvtav1 --enable-libdav1d \
+      --enable-audiotoolbox --enable-videotoolbox --enable-libvorbis --enable-libsvtav1 --enable-libdav1d --enable-librav1e \
       --enable-libass --enable-lto --enable-opencl
 
   checkStatus $? "configuration of ${SOFTWARE} failed"

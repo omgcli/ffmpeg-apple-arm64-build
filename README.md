@@ -17,6 +17,7 @@ This repository builds FFmpeg and FFprobe for Mac OSX using
     - [SVT-AV1](https://github.com/AOMediaCodec/SVT-AV1) for AV1 de-/encoding
     - [aom](https://aomedia.org/) for AV1 de-/encoding
     - [dav1d](https://code.videolan.org/videolan/dav1d) for AV1 decoding
+    - [rav1e](https://github.com/xiph/rav1e) for AV1 encoding
     - [openh264](https://www.openh264.org/) for H.264 de-/encoding
     - [x264](http://www.videolan.org/developers/x264.html) for H.264 encoding
     - [x265](http://x265.org/) for H.265/HEVC encoding
