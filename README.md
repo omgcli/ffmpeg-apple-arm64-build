@@ -16,6 +16,7 @@ This repository builds FFmpeg and FFprobe for Mac OSX using
 - video codecs
     - [SVT-AV1](https://github.com/AOMediaCodec/SVT-AV1) for AV1 de-/encoding
     - [aom](https://aomedia.org/) for AV1 de-/encoding
+    - [dav1d](https://code.videolan.org/videolan/dav1d) for AV1 decoding
     - [openh264](https://www.openh264.org/) for H.264 de-/encoding
     - [x264](http://www.videolan.org/developers/x264.html) for H.264 encoding
     - [x265](http://x265.org/) for H.265/HEVC encoding
@@ -39,6 +40,7 @@ There are just a few dependencies to other tools. Most of the software is compil
 - c and c++ compiler like AppleClang (included in Xcode) or gcc
 - curl / git for downloading files
 - make
+- [rust](https://rustup.rs/) and [cargo-c](https://github.com/lu-zero/cargo-c#installation)
 
 ### Optional
 - sysctl (on Mac OSX) for multicore compilation

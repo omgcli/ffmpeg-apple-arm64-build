@@ -89,6 +89,18 @@ checkStatus $? "build pkg-config"
 echoDurationInSections $START_TIME
 
 START_TIME=$(currentTimeInSeconds)
+echoSection "compile meson"
+$SCRIPT_DIR/build-meson.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "0.61.2" > "$WORKING_DIR/build-meson.log" 2>&1
+checkStatus $? "build meson"
+echoDurationInSections $START_TIME
+
+START_TIME=$(currentTimeInSeconds)
+echoSection "compile ninja"
+$SCRIPT_DIR/build-ninja.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "v1.10.2" > "$WORKING_DIR/build-ninja.log" 2>&1
+checkStatus $? "build ninja"
+echoDurationInSections $START_TIME
+
+START_TIME=$(currentTimeInSeconds)
 echoSection "compile FriBidi"
 $SCRIPT_DIR/build-fribidi.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$CPUS" "1.0.11" > "$WORKING_DIR/build-fribidi.log" 2>&1
 checkStatus $? "build FriBidi"
@@ -130,7 +142,6 @@ $SCRIPT_DIR/build-libass.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$CPUS" "0.
 checkStatus $? "build libass"
 echoDurationInSections $START_TIME
 
-
 START_TIME=$(currentTimeInSeconds)
 echoSection "compile x265"
 $SCRIPT_DIR/build-x265.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$CPUS" "3.4" > "$WORKING_DIR/build-x265.log" 2>&1
@@ -141,6 +152,12 @@ START_TIME=$(currentTimeInSeconds)
 echoSection "compile svt-av1"
 $SCRIPT_DIR/build-svt-av1.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$CPUS" "xxxx" > "$WORKING_DIR/build-svt-av1.log" 2>&1
 checkStatus $? "build svt-av1"
+echoDurationInSections $START_TIME
+
+START_TIME=$(currentTimeInSeconds)
+echoSection "compile dav1d"
+$SCRIPT_DIR/build-dav1d.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$CPUS" "0.9.2" > "$WORKING_DIR/build-dav1d.log" 2>&1
+checkStatus $? "build dav1d"
 echoDurationInSections $START_TIME
 
 START_TIME=$(currentTimeInSeconds)
